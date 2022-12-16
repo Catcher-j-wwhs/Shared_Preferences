@@ -7,6 +7,13 @@ import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText Username, HighScore ;
@@ -19,6 +26,25 @@ public class MainActivity extends AppCompatActivity {
         Username = findViewById(R.id.edit1);
         HighScore = findViewById(R.id.edit2);
         Enrolled = findViewById(R.id.enrolled);
+        // create Gson object
+        Gson gson = new Gson();
+
+        Adress sj1Adress = new Adress("United Sates of america","Dallas");
+        ArrayList<FamilyMember> family = new ArrayList<>();
+        family.add(new FamilyMember("Wife",30));
+        family.add(new FamilyMember("Son",12));
+
+
+        // creates a random employee object
+        Employee employee = new Employee("Catch",39,"Catch.gmail.com", sj1Adress, family);
+        String sj1 = gson.toJson(employee);
+        String json2 = gson.toJson(family);
+
+        Type familyType = new TypeToken<ArrayList<FamilyMember>>(){}.getType();
+        ArrayList<FamilyMember> family1 = gson.fromJson(json2, familyType);
+
+        Employee employee1 = gson.fromJson(sj1,Employee.class);
+
     }
 
     // Fetch the stored data in onResume()

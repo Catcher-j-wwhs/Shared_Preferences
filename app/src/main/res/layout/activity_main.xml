@@ -45,12 +45,12 @@
         android:inputType="number" />
 
     <CheckBox
+        android:id="@+id/enrolled"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enrolled"
         android:layout_below="@id/edit2"
         android:layout_marginStart="18dp"
-        android:id="@+id/enrolled"
+        android:text="Enrolled"
 
         />
 
